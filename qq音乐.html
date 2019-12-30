@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>歌曲列表</title>
+    <script src="../node_modules/vue/dist/vue.min.js"></script>
+    <style>
+        ul li {
+            list-style: none;
+        }
+
+        .song {
+            width: 600px;
+
+            margin: 20px auto;
+            background: #ccc;
+            padding: 10px;
+        }
+
+        .item1 {
+            display: flex;
+            margin: 10px 0;
+            background: pink;
+            height: 180px;
+            border-radius: 20px;
+        }
+
+        .changeItem {
+            display: flex;
+            margin: 10px 0;
+            background: yellowgreen;
+            height: 180px;
+            border-radius: 20px;
+        }
+
+        .changeItem1 {
+            display: flex;
+            margin: 10px 0;
+            background: goldenrod;
+            height: 180px;
+            border-radius: 20px;
+        }
+
+        img {
+            width: 150px;
+            height: 150px;
+            margin: 20px 10px;
+        }
+
+        .content {
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <ul class="song">
+    
+                        <li class="item1" v-for='(item,index) in list'>
+                            <img :src="item.img" alt="">
+                <div class="content">
+                    <p>{{item.title}} </p>
+                    <p v-for='(cc,idx) in item.songlist'>{{(idx+1)}}~  {{cc.songname}} --{{cc.songer}} </p>
+                    <!-- <p>2、李白 李荣浩</p>
+                    <p>3、丑八怪 薛之谦</p> -->
+                </div>
+            </li>
+        </ul>
+    </div>
+ <script>
+  new Vue({
+      el:'#box',
+       data:{
+     list:[
+         {
+            img:'https://y.gtimg.cn/music/photo_new/T003R300x300M000003ryxcV0GIz3h.jpg?max_age=2592000',
+            title:'流行榜指数',
+            songlist:[
+                {songname:'断桥残雪',songer:'许嵩'},
+                {songname:'大笨钟',songer:'周杰伦'},
+                {songname:'这就是爱',songer:'张杰'}]
+         },
+         {
+            img:'https://y.gtimg.cn/music/photo_new/T003R300x300M000003ryxcV0GIz3h.jpg?max_age=2592000',
+            title:'热门榜指数',
+            songlist:[
+            {songname:'开心的马骝',songer:'刘德华'},
+            {songname:'客官不可以',songer:'徐良'},
+            {songname:'演员',songer:'薛之谦'}]
+         },
+         {
+            img:'https://y.gtimg.cn/music/photo_new/T003R300x300M000003ryxcV0GIz3h.jpg?max_age=2592000',
+            title:'本周榜指数',
+            songlist:[
+                {songname:'鸡你太美',songer:'蔡徐坤'},
+                {songname:'醉赤壁',songer:'林俊杰'},
+                {songname:'我们结婚吧',songer:'白小白'}]
+         }
+     ]}
+    
+  })
+ 
+ 
+ 
+ 
+ </script>
+    
+
+
+
+</body>
+
+
+
+
+</html>

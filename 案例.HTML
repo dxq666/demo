@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../node_modules/vue/dist/vue.min.js"></script>
+
+</head>
+<body>
+   
+        <div id="box">
+            <div class="container">
+    <h1 class="text-center text-primary" >学生信息登记表</h1>
+    <label for="username">姓名:</label>
+    <input type="text" class="form-control" id="username" placeholder="请输入姓名" v-model='name'>
+    <label for="age">年龄:</label>
+    <input type="text" class="form-control" id="age" placeholder="请输入年龄" v-model='age'>
+    <label for="pheno">电话:</label>
+    <input type="text" class="form-control" id="pheno" placeholder="请输入电话" v-model='pheno' >
+    <button class="btn btn-primary" @click='add()'>添加</button>
+    <button class="btn btn-secondary"  @click="del()">重置</button>
+    <table class="table table-bordered">
+        <thead>
+<tr>
+
+   <td>序号</td>
+    <td>姓名</td>
+    <td>年龄</td>
+    <td>电话</td>
+    <td>重置</td>
+</tr>
+        </thead>
+        <tbody>
+            <tr v-for='(item,index) in acc'>
+                <td > {{index>8 ? index+1 :"0"+(index+1)}} </td>
+                <td>{{item.a}} </td>
+                <td>{{item.b}} </td>
+                <td>{{item.c}} </td>
+                <td>
+                    <button class="btn btn-dark" @click='rom(index)'>删除</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+<script>
+new Vue({
+    el:'#box',
+    data:{//属性
+    name:'',
+    age:'',
+    pheno:'',
+    acc:[]
+    },
+    methods:{
+        add(){
+            console.log(this.name,this.age)
+            this.acc.push({
+
+                a:this.name,
+                b:this.age,
+                c:this.pheno,
+                
+            })  
+             this.del()
+        },
+        del(){
+            this.name=''
+            this.age=''
+            this.pheno=''
+        },
+        rom(n){
+            this.acc.splice(n,1)
+        }
+        
+    }
+})
+
+
+
+
+
+
+</script>
+</body>
+</html>
